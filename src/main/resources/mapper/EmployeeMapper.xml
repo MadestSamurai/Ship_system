@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csscship.dao.EmployeeMapper">
+  <resultMap id="BaseResultMap" type="com.csscship.entity.Employee">
+    <id column="empid" jdbcType="INTEGER" property="empid" />
+    <result column="empname" jdbcType="VARCHAR" property="empname" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="loginid" jdbcType="INTEGER" property="loginid" />
+  </resultMap>
+
+  <resultMap id="getDept" type="Employee" extends="BaseResultMap">
+    <collection property="department" ofType="Department">
+      <result column="deptid" jdbcType="INTEGER" property="deptid" />
+      <result column="deptname" jdbcType="VARCHAR" property="deptname" />
+    </collection>
+  </resultMap>
+  <select id="getAll" resultType="com.csscship.entity.Employee">
+    select *
+    from employee
+    where 1=1
+    <if test="empname !='' and empname !=null">
+      and empname like CONCAT('%', #{empname}, '%')
+    </if>
+    <if test="certId !='' and certId !=null">
+      and certId like CONCAT('%',#{certId},'%')
+    </if>
+    <if test="superior !='' and superior !=null">
+      and superior=#{superior}
+    </if>
+    order by empid
+  </select>
+  <select id="getEmployeeByCertId" resultType="com.csscship.entity.Employee" parameterType="String">
+    select * from employee where certId=#{certId}
+  </select>
+  <select id="getEmployeeByDeptid" resultType="com.csscship.entity.Employee" parameterType="Integer">
+    select employee.*
+    from employee,department,emp_dept
+    where empid = emp_id and deptid = dept_id and deptid=#{deptid}
+  </select>
+  <select id="getSuperiorByShipid" resultType="com.csscship.entity.Employee" parameterType="Integer">
+    select employee.*,id as shipsupid
+    from employee,ship,ship_superior
+    where empid = superior_id and shipid = ship_id and ship_id = #{shipid}
+  </select>
+  <select id="getEmployeeByName" resultType="com.csscship.entity.Employee" parameterType="String">
+    select * from employee where empname like concat('%',#{empname},'%')
+  </select>
+  <select id="getEmployeeByLoginId" resultType="com.csscship.entity.Employee" parameterType="Integer">
+    select * from employee where loginid=#{loginid}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="com.csscship.entity.Employee">
+    select *
+    from employee
+    where empid = #{empid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from employee
+    where empid = #{empid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteDeptRelationByPrimaryKey" parameterType="java.lang.Integer">
+    delete from emp_dept
+    where emp_id = #{empid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="empid" parameterType="com.csscship.entity.Employee">
+    insert into employee (empname, age,
+      sex, address,
+      loginid,certId,expert,empinfo,superior)
+    values (#{empname,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER},
+      #{sex,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR},
+        #{loginid,jdbcType=INTEGER},#{certId},#{expert},#{empinfo},#{superior,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.csscship.entity.Employee">
+    insert into employee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="empid != null">
+        empid,
+      </if>
+      <if test="empname != null">
+        empname,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="loginid != null">
+        loginid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="empid != null">
+        #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="empname != null">
+        #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="loginid != null">
+        #{loginid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.csscship.entity.Employee">
+    update employee
+    <set>
+      <if test="empname != null">
+        empname = #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="loginid != null">
+        loginid = #{loginid,jdbcType=INTEGER},
+      </if>
+      <if test="certId != null">
+        certId = #{certId,jdbcType=VARCHAR},
+      </if>
+      <if test="empinfo != null">
+        empinfo = #{empinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="expert != null">
+        expert = #{expert,jdbcType=INTEGER},
+      </if>
+      <if test="superior != null">
+        superior = #{superior,jdbcType=INTEGER},
+      </if>
+    </set>
+    where empid = #{empid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.csscship.entity.Employee">
+    update employee
+    set empname = #{empname,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      loginid = #{loginid,jdbcType=INTEGER},
+      certId=#{certId},
+      empinfo=#{empinfo},
+      expert=#{expert},
+      superior=#{superior}
+    where empid = #{empid,jdbcType=INTEGER}
+  </update>
+  <insert id="insertRelationByEmpid" parameterType="java.lang.Integer">
+    insert into emp_dept (emp_id, dept_id)
+    values (#{empid,jdbcType=INTEGER},#{deptid,jdbcType=INTEGER})
+  </insert>
+  <select id="getExpert" resultType="com.csscship.entity.Employee">
+    select * from employee where expert=0
+  </select>
+  <select id="getWorker" resultType="com.csscship.entity.Employee">
+    select * from employee where expert=1
+  </select>
+</mapper>

@@ -1,0 +1,431 @@
+HTML, BODY, DIV, SPAN, APPLET, OBJECT, IFRAME, H1, H2, H3, H4, H5, H6, P, BLOCKQUOTE, PRE, A, ABBR, ACRONYM, ADDRESS, BIG, CITE, CODE, DEL, DFN, EM, FONT, IMG, INS, KBD, Q, S, SAMP, SMALL, STRIKE, STRONG, SUB, SUP, TT, VAR, DL, DT, DD, OL, UL, LI, FIELDSET, FORM, LABEL, LEGEND, TABLE, CAPTION, TBODY, TFOOT, THEAD, TR, TH, TD, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    padding-bottom: 0;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+}
+
+article, aside, dialog, footer, header, section, footer, nav, figure, menu {
+    display: block;
+}
+
+ADDRESS, CAPTION, CITE, CODE, DFN, EM, STRONG, TH, VAR, TD {
+    font-style: normal;
+    font-weight: normal;
+}
+
+H1, H2, H3, H4, H5, H6 {
+    font-weight: normal;
+}
+
+TABLE {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input, button, select, textarea {
+    font-size: 100%;
+    margin: 0;
+    vertical-align: baseline;
+    *vertical-align: middle;
+    font-family: Arial, Tahoma, "Microsoft YaHei", "SimSun", serif;
+}
+
+FIELDSET, IMG, ABBR, ACRONYM {
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}
+
+textarea {
+    overflow: auto;
+    resize: none;
+}
+
+ol, ul, li {
+    list-style: none;
+}
+
+BLOCKQUOTE:before, BLOCKQUOTE:after, Q:before, Q:after {
+    content: "";
+}
+
+BLOCKQUOTE, Q {
+    QUOTES: "" ""
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+    display: block;
+}
+
+audio, canvas, video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+abbr, acronym {
+    border: 0;
+    font-variant: normal;
+}
+
+address, caption, cite, code, dfn, em, th, var {
+    font-style: normal;
+    font-weight: 500;
+}
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+b, strong {
+    font-weight: bold;
+}
+
+:focus, img {
+    outline: 0;
+}
+
+a {
+    color: #505050;
+    text-decoration: none;
+    outline: 0;
+    transition: all .28s linear;
+    -moz-transition: all .28s linear;
+    -webkit-transition: all .28s linear;
+    -o-transition: all .28s linear;
+}
+
+a:visited {
+    text-decoration: none;
+    outline: 0;
+}
+
+a:active {
+    text-decoration: none;
+    outline: 0;
+}
+
+a:hover {
+    outline: 0;
+}
+
+.sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+.sup {
+    top: -0.5em;
+}
+
+.sub {
+    bottom: -0.25em;
+}
+
+.clear:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.clear {
+    zoom: 1; /* for IE6 IE7 */
+}
+
+html, body {
+    line-height: normal;
+    width: 100%;
+    height: auto;
+    min-width: 1000px;
+    position: relative;
+    font-size: 12px;
+    -webkit-text-size-adjust: none;
+    color: #666;
+    font-family: Arial, Tahoma, "Microsoft YaHei", "SimSun";
+    -webkit-font-smoothing: antialiased;
+}
+
+div#Footer_CodeDiv {
+    display: none;
+}
+
+@-webkit-keyframes tada {
+    0% {
+        -webkit-transform: scale(1)
+    }
+    10%, 20% {
+        -webkit-transform: scale(0.9) rotate(-3deg)
+    }
+    30%, 50%, 70%, 90% {
+        -webkit-transform: scale(1.1) rotate(3deg)
+    }
+    40%, 60%, 80% {
+        -webkit-transform: scale(1.1) rotate(-3deg)
+    }
+    100% {
+        -webkit-transform: scale(1) rotate(0)
+    }
+}
+
+@keyframes tada {
+    0% {
+        transform: scale(1)
+    }
+    10%, 20% {
+        transform: scale(0.9) rotate(-3deg)
+    }
+    30%, 50%, 70%, 90% {
+        transform: scale(1.1) rotate(3deg)
+    }
+    40%, 60%, 80% {
+        transform: scale(1.1) rotate(-3deg)
+    }
+    100% {
+        transform: scale(1) rotate(0)
+    }
+}
+
+::selection {
+    background: #0084c6;
+    color: #FFF;
+}
+
+::-moz-selection {
+    background: #0084c6;
+    color: #FFF;
+}
+
+.animated {
+    transition: all .28s linear;
+    -moz-transition: all .28s linear;
+    -webkit-transition: all .28s linear;
+    -o-transition: all .28s linear;
+}
+
+.bezierCurve {
+    -webkit-transition: -webkit-transform 0.28s cubic-bezier(0.175, 0.885, 0.320, 1.5);
+    -moz-transition: -moz-transform 0.28s cubic-bezier(0.175, 0.885, 0.320, 1.5);
+    -o-transition: -o-transform 0.28s cubic-bezier(0.175, 0.885, 0.320, 1.5);
+    transition: transform 0.28s cubic-bezier(0.175, 0.885, 0.320, 1.5);
+}
+
+.bezierCurveAll {
+    -webkit-transition: all 0.38s cubic-bezier(0.175, 0.885, 0.320, 1.5);
+    -moz-transition: all 0.38s cubic-bezier(0.175, 0.885, 0.320, 1.5);
+    -o-transition: all 0.38s cubic-bezier(0.175, 0.885, 0.320, 1.5);
+    transition: all 0.38s cubic-bezier(0.175, 0.885, 0.320, 1.5);
+}
+
+.be-animating, .be-animatingFast {
+    visibility: hidden;
+}
+
+.tip_container {
+    display: none;
+    z-index: 9999;
+    position: fixed !important;
+    top: 0;
+    text-align: left;
+    width: auto;
+}
+
+.BaseMark {
+    margin: 0 auto;
+    position: relative;
+}
+
+header {
+    width: 1200px;
+    height: 135px;
+    margin: 0 auto;
+    position: relative;
+}
+
+header .logo {
+    top: 40px;
+    position: absolute;
+    left: 0;
+}
+
+header ul {
+    top: 29px;
+    position: absolute;
+    right: 0;
+}
+
+header ul li {
+    float: right;
+    margin-right: 11px;
+}
+
+header .searchBase {
+    width: 262px;
+    height: 34px;
+    background: #ededed;
+    border: 1px solid #cccccc;
+    border-radius: 17px;
+    position: absolute;
+    right: 0;
+    top: 64px;
+}
+
+header .searchBase input {
+    height: 34px;
+    background: none;
+    border: none;
+}
+
+header .searchBase input.search {
+    background: url(../images/search.png) center center no-repeat;
+    width: 39px;
+    float: left;
+    cursor: pointer;
+}
+
+header .searchBase input.searchword {
+    width: 212px;
+    color: #999;
+    font-family: "Microsoft YaHei", serif;
+    line-height: 34px;
+}
+
+nav {
+    width: 100%;
+    height: 48px;
+    background: #0084c6;
+    line-height: 48px;
+    position: relative;
+    z-index: 100;
+}
+
+nav .nav {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+nav .nav .PMenu {
+    height: 48px;
+    line-height: 48px;
+    float: left;
+    font-size: 16px;
+    overflow: visible;
+    position: relative;
+}
+
+nav .nav .PAMenu {
+    display: block;
+    padding: 0 34px;
+    text-align: center;
+    color: #FFF;
+}
+
+nav .nav .PMenu:hover, nav .nav .PMenu.current {
+    background: #58b431;
+}
+
+.navboxBase {
+    width: 100%;
+    padding: 0;
+    position: absolute;
+    top: 48px;
+    background: #FFF;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    display: none;
+    z-index: 200;
+}
+
+.navbox {
+    width: 1200px;
+    min-height: 422px;
+    margin: 0 auto;
+    padding: 30px 0;
+    text-align: left;
+    color: #333;
+    overflow: visible;
+    font-size: 12px;
+    line-height: 26px;
+}
+
+section {
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+footer {
+    width: 100%;
+    height: 180px;
+    margin-top: 60px;
+    background: #0084c6;
+    color: #fff;
+    display: block;
+    overflow: hidden;
+}
+
+footer .footBase {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+footer .footBase h3 {
+    line-height: 24px;
+    width: 70%;
+    height: auto;
+    background: url(../images/ico_17.png) left center no-repeat;
+    padding-left: 34px;
+    position: absolute;
+    top: 40px;
+    left: 0;
+}
+
+footer .footBase h3 span {
+    display: inline-block;
+}
+
+footer .footBase p {
+    height: 35px;
+    border-left: 1px solid #00abff;
+    position: absolute;
+    left: 12px;
+    top: 104px;
+    padding-left: 21px;
+    line-height: 19px;
+    display: block;
+    font-size: 12px;
+}
+
+footer .footBase p a {
+    color: #fff;
+}
+
+footer .footBase p a:hover {
+    text-decoration: underline;
+}
+
+@media all and (min-width: 1px) and (max-width: 1279px) {
+    header, section, footer .footBase, nav .nav, .navbox, .BaseMark {
+        width: 980px;
+    }
+
+    nav .nav .PAMenu {
+        padding: 0 22px;
+    }
+}
+
+@media all and (min-width: 1280px) and (max-width: 1580px) {
+    header, section, footer .footBase, nav .nav, .navbox, .BaseMark {
+        width: 1200px;
+    }
+}

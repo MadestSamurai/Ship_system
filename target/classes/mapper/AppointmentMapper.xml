@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csscship.dao.AppointmentMapper">
+  <resultMap id="BaseResultMap" type="com.csscship.entity.Appointment">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ordersideid" jdbcType="INTEGER" property="ordersideid" />
+    <result column="employeeid" jdbcType="INTEGER" property="employeeid" />
+    <result column="time" jdbcType="DATE" property="time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, ordersideid, employeeid, time
+  </sql>
+  <select id="findAll" resultType="com.csscship.entity.Appointment">
+    select a.*,p.name as ordersidename,d.empname as employeename from appointment a
+    left join orderside p on a.ordersideid=p.id
+    left join employee d on d.empid=a.employeeid
+    where 1=1
+    <if test="ordersideids !=null">
+      and a.ordersideid in
+          <foreach collection="ordersideids" item="ordersideid" index="index" open="(" close=")" separator=",">
+      #{ordersideid}
+    </foreach>
+
+    </if>
+    <if test="employeeids !=null">
+      and a.employeeid in
+      <foreach collection="employeeids" item="employeeid" index="index" open="(" close=")" separator=",">
+        #{employeeid}
+      </foreach>
+    </if>
+    order by a.id
+  </select>
+  <select id="selectByOrdersideId" parameterType="java.lang.Integer" resultType="com.csscship.entity.Appointment">
+    select a.*,p.name as ordersidename,d.empname as employeename from appointment a
+    left join orderside p on a.ordersideid=p.id
+   left join employee d on d.empid=a.employeeid
+    where ordersideid = #{ordersideid}
+    order by a.id
+  </select>
+  <select id="selectByEmployeeId" parameterType="java.lang.Integer" resultType="com.csscship.entity.Appointment">
+    select a.*,p.name as ordersidename,d.empname as employeename from appointment a
+    left join orderside p on a.ordersideid=p.id
+    left join employee d on d.empid=a.employeeid
+    where employeeid = #{employeeId}
+    <if test="ordersideids !=null">
+      and a.ordersideid in
+      <foreach collection="ordersideids" item="ordersideid" index="index" open="(" close=")" separator=",">
+        #{ordersideid}
+      </foreach>
+    </if>
+    <if test="time !=null and time!=''">
+      and a.time=#{time}
+    </if>
+    order by a.id
+  </select>
+  <select id="selectTheLast" parameterType="Integer"  resultType="Integer">
+    select max(id) from appointment
+    where ordersideid = #{ordersideid}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="com.csscship.entity.Appointment">
+    select a.*,p.name as ordersidename,d.empname as employeename
+    from appointment a
+    left join employee d
+    on d.empid=a.employeeid
+    left join orderside p
+    on p.id=a.ordersideid
+    where a.id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from appointment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.csscship.entity.Appointment">
+    insert into appointment (ordersideid, employeeid,
+      time,expenses)
+    values (#{ordersideid,jdbcType=INTEGER}, #{employeeid,jdbcType=INTEGER},
+      #{time,jdbcType=DATE},#{expenses})
+  </insert>
+  <insert id="insertSelective" parameterType="com.csscship.entity.Appointment">
+    insert into appointment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="ordersideid != null">
+        ordersideid,
+      </if>
+      <if test="employeeid != null">
+        employeeid,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ordersideid != null">
+        #{ordersideid,jdbcType=INTEGER},
+      </if>
+      <if test="employeeid != null">
+        #{employeeid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.csscship.entity.Appointment">
+    update appointment
+    <set>
+      <if test="ordersideid != null">
+        ordersideid = #{ordersideid,jdbcType=INTEGER},
+      </if>
+      <if test="employeeid != null">
+        employeeid = #{employeeid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.csscship.entity.Appointment">
+    update appointment
+    set ordersideid = #{ordersideid,jdbcType=INTEGER},
+      employeeid = #{employeeid,jdbcType=INTEGER},
+      time = #{time,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

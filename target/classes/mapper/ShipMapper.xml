@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csscship.dao.ShipMapper">
+  <resultMap id="BaseResultMap" type="com.csscship.entity.Ship">
+    <id column="shipid" jdbcType="INTEGER" property="shipid" />
+    <result column="shipname" jdbcType="VARCHAR" property="shipname" />
+    <result column="shiptype" jdbcType="INTEGER" property="shiptype" />
+  </resultMap>
+  <select id="findAll" resultType="com.csscship.entity.Ship" parameterType="com.csscship.entity.Ship">
+    select * from ship
+    where 1=1
+    <if test="shipname !='' and shipname != null">
+      and shipname like concat('%',#{shipname},'%')
+    </if>
+    <if test="shiptype != null">
+     and shiptype like concat('%',#{shiptype},'%')
+    </if>
+  </select>
+  <select id="findByName" resultType="com.csscship.entity.Ship" parameterType="String">
+    select  * from ship where shipname=#{shipname}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
+    from ship
+    where shipid = #{shipid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ship
+    where shipid = #{shipid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deletePartRelationByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ship_part
+    where ship_id = #{shipid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="shipid" parameterType="com.csscship.entity.Ship">
+    insert into ship (shipname, shiptype, price, shipstatus, shipinfo
+      )
+    values ( #{shipname,jdbcType=VARCHAR}, #{shiptype,jdbcType=INTEGER},#{price},#{shipstatus},#{shipinfo}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.csscship.entity.Ship">
+    insert into ship
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shipid != null">
+        shipid,
+      </if>
+      <if test="shipname != null">
+        shipname,
+      </if>
+      <if test="shiptype != null">
+        shiptype,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shipid != null">
+        #{shipid,jdbcType=INTEGER},
+      </if>
+      <if test="shipname != null">
+        #{shipname,jdbcType=VARCHAR},
+      </if>
+      <if test="shiptype != null">
+        #{shiptype,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.csscship.entity.Ship">
+    update ship
+    <set>
+      <if test="shipname != null">
+        shipname = #{shipname,jdbcType=VARCHAR},
+      </if>
+      <if test="shiptype != null">
+        shiptype = #{shiptype,jdbcType=INTEGER},
+      </if>
+    </set>
+    where shipid = #{shipid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.csscship.entity.Ship">
+    update ship
+    set shipname = #{shipname,jdbcType=VARCHAR},
+      shiptype = #{shiptype,jdbcType=INTEGER},shipstatus=#{shipstatus},price=#{price},shipinfo=#{shipinfo}
+    where shipid = #{shipid,jdbcType=INTEGER}
+  </update>
+  <update id="updateShipStatus" parameterType="com.csscship.entity.Ship">
+    update ship set shipstatus=#{shipstatus} where shipid=#{shipid}
+  </update>
+  <select id="getShipByName" resultType="com.csscship.entity.Ship" parameterType="String">
+    select * from ship where shipname like concat('%',#{shipname},'%')
+  </select>
+  <insert id="insertRelationByShipid" parameterType="java.lang.Integer">
+    insert into ship_part (ship_id, part_id)
+    values (#{shipid,jdbcType=INTEGER},#{partid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertShipSupRelation" parameterType="java.lang.Integer">
+    insert into ship_superior (ship_id, superior_id)
+    values (#{shipid,jdbcType=INTEGER},#{superiorid,jdbcType=INTEGER})
+  </insert>
+  <select id="selectShipBySuperior" parameterType="java.lang.Integer" resultType="com.csscship.entity.Ship">
+    select ship.* from ship_superior,ship
+    where shipid=ship_id and superior_id = #{superiorid,jdbcType=INTEGER}
+  </select>
+  <delete id="delShipSupById" parameterType="java.lang.Integer">
+    delete from ship_superior
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="delShipSupByShipId" parameterType="java.lang.Integer">
+    delete from ship_superior
+    where ship_id = #{shipid,jdbcType=INTEGER}
+  </delete>
+  <select id="selectShipPartByTaskid" parameterType="java.lang.Integer" resultType="map">
+    select ship_id,part_id from ship_part
+    where taskid = #{taskid,jdbcType=INTEGER}
+  </select>
+  <select id="getAllTask" resultType="com.csscship.entity.Task">
+    select * from ship_part
+  </select>
+</mapper>

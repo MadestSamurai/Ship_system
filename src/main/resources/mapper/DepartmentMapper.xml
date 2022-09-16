@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csscship.dao.DepartmentMapper">
+  <resultMap id="BaseResultMap" type="com.csscship.entity.Department">
+    <id column="deptid" jdbcType="INTEGER" property="deptid" />
+    <result column="deptname" jdbcType="VARCHAR" property="deptname" />
+  </resultMap>
+
+  <resultMap id="getDept" type="Department" extends="BaseResultMap">
+    <collection property="employee" ofType="Employee">
+      <result column="empid" jdbcType="INTEGER" property="empid" />
+    </collection>
+  </resultMap>
+    <select id="selectAll" resultType="com.csscship.entity.Department" >
+    select * from department
+  </select>
+    <select id="getDepartment" resultType="com.csscship.entity.Department" parameterType="Integer">
+    select * from department where deptid=#{deptid}
+  </select>
+    <update id="updateById" parameterType="com.csscship.entity.Department" >
+    update department set deptname=#{deptname}, deptinfo=#{deptinfo} where deptid=#{deptid}
+  </update>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from department
+    where deptid = #{deptid}
+  </delete>
+  <delete id="deleteEmpRelationById" parameterType="java.lang.Integer">
+    delete from emp_dept
+    where dept_id = #{deptid,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.csscship.entity.Department">
+    insert into department (deptname, deptinfo)
+    values (#{deptname},#{deptinfo})
+  </insert>
+  <select id="getDepartmentByName" resultType="com.csscship.entity.Department" parameterType="String">
+    select * from department where deptname like concat('%',#{deptname},'%')
+  </select>
+  <select id="getDepartmentByEmpid" resultType="java.lang.String" parameterType="java.lang.Integer">
+    select deptname from department,emp_dept
+    where deptid = dept_id and emp_id = #{empid,jdbcType=INTEGER}
+  </select>
+</mapper>

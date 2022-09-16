@@ -1,0 +1,322 @@
+﻿.bannerBase {
+    margin-top: 30px;
+}
+
+.quickMenu {
+    width: 328px;
+    border: 1px solid #dddddd;
+    float: left;
+    display: block;
+    overflow: hidden;
+}
+
+.quickMenu .title {
+    height: 75px;
+    padding-left: 20px;
+    line-height: 75px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 1px solid #dddddd;
+}
+
+.quickMenu ul li {
+    width: 164px;
+    height: 91px;
+    float: left;
+}
+
+.quickMenu ul li a {
+    display: block;
+    line-height: 90px;
+    font-size: 14px;
+    color: #333;
+}
+
+.quickMenu ul li.grey {
+    background: #f2f2f2;
+}
+
+.quickMenu ul li span {
+    width: 24px;
+    height: 24px;
+    margin-left: 35px;
+    margin-right: 12px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.quickMenu ul li span.style01 {
+    background: url(../images/ico_01.png) center center no-repeat;
+}
+
+.quickMenu ul li span.style02 {
+    background: url(../images/ico_02.png) center center no-repeat;
+}
+
+.quickMenu ul li span.style03 {
+    background: url(../images/ico_03.png) center center no-repeat;
+}
+
+.quickMenu ul li span.style04 {
+    background: url(../images/ico_04.png) center center no-repeat;
+}
+
+.quickMenu ul li span.style05 {
+    background: url(../images/ico_05.png) center center no-repeat;
+}
+
+.quickMenu ul li span.style06 {
+    background: url(../images/ico_06.png) center center no-repeat;
+}
+
+.quickMenu ul li span.style07 {
+    background: url(../images/ico_07.png) center center no-repeat;
+}
+
+.quickMenu ul li span.style08 {
+    background: url(../images/ico_08.png) center center no-repeat;
+}
+
+.quickMenu ul li a:hover {
+    background: url(../images/bg_01.jpg) center center no-repeat;
+    background-size: 100%;
+    color: #fff;
+}
+
+.quickMenu ul li a:hover span.style01 {
+    background: url(../images/ico_01_hover.png) center center no-repeat;
+}
+
+.quickMenu ul li a:hover span.style02 {
+    background: url(../images/ico_02_hover.png) center center no-repeat;
+}
+
+.quickMenu ul li a:hover span.style03 {
+    background: url(../images/ico_03_hover.png) center center no-repeat;
+}
+
+.quickMenu ul li a:hover span.style04 {
+    background: url(../images/ico_04_hover.png) center center no-repeat;
+}
+
+.quickMenu ul li a:hover span.style05 {
+    background: url(../images/ico_05_hover.png) center center no-repeat;
+}
+
+.quickMenu ul li a:hover span.style06 {
+    background: url(../images/ico_06_hover.png) center center no-repeat;
+}
+
+.quickMenu ul li a:hover span.style07 {
+    background: url(../images/ico_07_hover.png) center center no-repeat;
+}
+
+.quickMenu ul li a:hover span.style08 {
+    background: url(../images/ico_08_hover.png) center center no-repeat;
+}
+
+/* banner css */
+.focusBox {
+    position: relative;
+    width: 848px;
+    height: 440px;
+    overflow: hidden;
+    float: right;
+}
+
+.focusBox .pic img {
+    width: 848px;
+    height: 440px;
+    display: block;
+}
+
+.focusBox .txt-bg {
+    position: absolute;
+    bottom: 10px;
+    height: 60px;
+    width: 100%;
+    background: #0084c6;
+    filter: alpha(opacity=90);
+    opacity: 0.9;
+    overflow: hidden;
+}
+
+.focusBox .txt {
+    position: absolute;
+    bottom: 10px;
+    height: 60px;
+    width: 699px;
+    overflow: hidden;
+    color: #fff;
+    font-size: 14px;
+    line-height: 60px;
+    text-indent: 30px;
+}
+
+.focusBox .num {
+    position: absolute;
+    bottom: 33px;
+    right: 28px;
+}
+
+.focusBox .num li {
+    float: left;
+    position: relative;
+    width: 14px;
+    height: 14px;
+    margin-right: 7px;
+    cursor: pointer;
+}
+
+.focusBox .num li a {
+    position: absolute;
+    display: block;
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border-radius: 7px;
+    opacity: 0.35;
+}
+
+.focusBox .num li.on a, .focusBox .num a:hover {
+    opacity: 1;
+    box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.25);
+    position: relative;
+}
+
+.expertBase {
+    margin-top: 33px;
+    position: relative;
+    display: block;
+    overflow: visible;
+}
+
+.expertBase .title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    height: 66px;
+    line-height: 66px;
+    border-bottom: 1px #dddddd solid;
+}
+
+.expertBase .title span {
+    height: 68px;
+    background: url(../images/ico_06.gif) left bottom no-repeat;
+    display: block;
+}
+
+.expertBase .prevNext {
+    height: 24px;
+    position: absolute;
+    top: 21px;
+    right: 0;
+}
+
+.expertBase .prevNext a {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    margin-left: 12px;
+}
+
+.expertBase .prevNext .prevBtn {
+    background: url(../images/ico_10.png) center center no-repeat;
+}
+
+.expertBase .prevNext .nextBtn {
+    background: url(../images/ico_11.png) center center no-repeat;
+}
+
+.expertBase .prevNext .prevBtn:hover {
+    background: url(../images/ico_16.png) center center no-repeat;
+}
+
+.expertBase .prevNext .nextBtn:hover {
+    background: url(../images/ico_15.png) center center no-repeat;
+}
+
+.expertBase .experts {
+    width: 100%;
+    margin-top: 30px;
+    height: 179px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+
+.expertBase .experts ul {
+    width: 8888px;
+    height: 179px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.expertBase .experts ul li {
+    width: 120px;
+    height: 179px;
+    float: left;
+    margin-right: 32px;
+    border: 1px solid #dde4e6;
+    position: relative;
+}
+
+.expertBase .experts ul li .txt {
+    width: 100%;
+    color: #fff;
+    background: rgba(0, 132, 198, 0.8);
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    text-align: center;
+}
+
+.expertBase .experts ul li .txt p {
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.expertBase .experts ul li .txt em {
+    display: block;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+@media all and (min-width: 1px) and (max-width: 1279px) {
+    .quickMenu {
+        width: 120px;
+    }
+
+    .quickMenu .title {
+        display: none;
+    }
+
+    .quickMenu ul li {
+        width: 120px;
+        height: 55px;
+    }
+
+    .quickMenu ul li.bgff {
+        background: #fff;
+    }
+
+    .quickMenu ul li.bggrey {
+        background: #f2f2f2;
+    }
+
+    .quickMenu ul li a {
+        line-height: 55px;
+    }
+
+    .quickMenu ul li span {
+        margin-left: 12px;
+    }
+
+    .expertBase .experts ul li {
+        margin-right: 21px;
+    }
+}
